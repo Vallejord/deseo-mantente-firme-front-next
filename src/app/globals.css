@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Paleta Frida */
+  --rojo-carmin: #B3122A;
+  --verde-selva: #2F5D3A;
+  --azul-cobalto: #1E3A8A;
+  --rosa-mexicano: #E5247A;
+  --ocre-tierra: #C08A3E;
+  --amarillo-girasol: #F2B441;
+  --papel-hueso: #F4EAD5;
+  --tinta-noche: #1A1412;
+  
+  /* Base colors */
+  --background: var(--papel-hueso);
+  --foreground: var(--tinta-noche);
+  --primary: var(--rojo-carmin);
+  --secondary: var(--azul-cobalto);
+  --accent: var(--rosa-mexicano);
+  
+  /* Typography variables */
+  --font-display: 'Playfair Display', serif;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-script: 'Dancing Script', cursive;
 }
 
 @theme inline {
+  /* Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-rojo-carmin: var(--rojo-carmin);
+  --color-verde-selva: var(--verde-selva);
+  --color-azul-cobalto: var(--azul-cobalto);
+  --color-rosa-mexicano: var(--rosa-mexicano);
+  --color-ocre-tierra: var(--ocre-tierra);
+  --color-amarillo-girasol: var(--amarillo-girasol);
+  --color-papel-hueso: var(--papel-hueso);
+  --color-tinta-noche: var(--tinta-noche);
+  
+  /* Typography */
+  --font-display: 'Playfair Display', serif;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-script: 'Dancing Script', cursive;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-serif), Georgia, serif;
+  line-height: 1.6;
 }
