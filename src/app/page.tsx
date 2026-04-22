@@ -1,65 +1,92 @@
-import Image from "next/image";
+import { obraData } from '@/content'
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-screen bg-papel-hueso">
+      {/* Hero temporal */}
+      <section className="flex flex-col items-center justify-center min-h-screen px-6 text-center">
+        <h1 className="font-display text-6xl md:text-8xl text-rojo-carmin mb-4">
+          {obraData.titulo}
+        </h1>
+        <p className="font-serif text-xl md:text-2xl text-tinta-noche mb-8 max-w-2xl">
+          {obraData.subtitulo}
+        </p>
+        <div className="font-script text-3xl text-rosa-mexicano">
+          "En un diálogo atemporal entre dos mujeres latinas, 
+          el arte es la trama que las sostiene y las salva"
+        </div>
+        <div className="mt-8 space-y-2 text-sm text-azul-cobalto font-serif">
+          <p><strong>{obraData.genero}</strong> • {obraData.duracion}</p>
+          <p>{obraData.edadSugerida}</p>
+        </div>
+      </section>
+      
+      {/* Secciones con datos reales */}
+      <section className="py-20 px-6 bg-verde-selva/10">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-display text-4xl text-azul-cobalto mb-8">Sinopsis</h2>
+          <div className="font-serif text-lg text-tinta-noche leading-relaxed space-y-4">
+            {obraData.sinopsis.split('\n\n').map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-display text-4xl text-azul-cobalto mb-8">Argumento</h2>
+          <div className="font-serif text-lg text-tinta-noche leading-relaxed space-y-4">
+            {obraData.argumento.split('\n\n').map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-6 bg-rosa-mexicano/10">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-display text-4xl text-azul-cobalto mb-8">Ficha Técnica</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="font-serif font-semibold text-xl text-rojo-carmin mb-4">Información Técnica</h3>
+              <div className="font-serif text-tinta-noche space-y-2">
+                <p><strong>Género:</strong> {obraData.riderTecnico.genero}</p>
+                <p><strong>Duración:</strong> {obraData.riderTecnico.duracion}</p>
+                <p><strong>Espacio mínimo:</strong> {obraData.riderTecnico.espacioMinimo}</p>
+                <p><strong>Montaje:</strong> {obraData.riderTecnico.tiempoMontaje}</p>
+                <p><strong>Desmontaje:</strong> {obraData.riderTecnico.desmontaje}</p>
+              </div>
+            </div>
+            <div>
+              <h3 className="font-serif font-semibold text-xl text-rojo-carmin mb-4">Equipo Principal</h3>
+              <div className="font-serif text-sm text-tinta-noche space-y-1">
+                {obraData.equipo.slice(0, 6).map((persona, index) => (
+                  <p key={index}>
+                    <strong>{persona.nombre}</strong> - {persona.rol}
+                  </p>
+                ))}
+                <p className="text-azul-cobalto italic mt-2">
+                  + {obraData.equipo.length - 6} colaboradores más
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contacto */}
+      <section className="py-20 px-6 bg-azul-cobalto/10">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="font-display text-4xl text-azul-cobalto mb-8">Contacto</h2>
+          <div className="font-script text-2xl text-rosa-mexicano mb-4">
+            {obraData.redesContacto.instagram}
+          </div>
+          <p className="font-serif text-tinta-noche">
+            {obraData.materialPrensa.descripcion}
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+      </section>
+    </main>
+  )
 }
